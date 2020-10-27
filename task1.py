@@ -1,4 +1,5 @@
 #! python3
+import time
 """
 (10 points) 
 Create a class object for a student.
@@ -74,15 +75,11 @@ class student:
         stgrades.sort(reverse=True)
         a=len(stgrades)
         if a>= 5:
-            for i in range(0,6):
-                sttotal=0
-                stmarks=stgrades[ind]
-                sttotal=stotal+stmarks
-                honorroll=stotal/5
-                if honorroll>=86:
-                    return True
-                else:
-                    return False
+            average=(stgrades[0]+stgrades[1]+stgrades[2]+stgrades[3]+stgrades[4])/5
+            if average>=86:
+                return True
+            else:
+                return False
         else:
             print(self.name+" does not have enough courses")
 def main():
@@ -101,4 +98,5 @@ def main():
 
 
 main()
+
 
