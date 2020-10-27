@@ -1,5 +1,4 @@
 #! python3
-import time
 """
 (10 points) 
 Create a class object for a student.
@@ -25,9 +24,10 @@ constructor     - should require the student name, studentNumber and grade (in t
 
 class student:
     name=""
-    grade=""
+    grade=int()
     studentnum=""
-    
+    grades=[]
+    courses=[]
     
 
 
@@ -39,22 +39,52 @@ class student:
         self.grade=grade
         
 
-    def getCourses(self,classes):
-        self.courses=classes
+    def getCourses(self,courses):
+        self.courses=courses
         
-    def getGrades(self,marks):
-        self.grades=marks
-        
+    def getGrades(self,grade1=0,grade2=0,grade3=0,grade4=0,grade5=0,grade6=0,grade7=0):
+        gradelist=[]
+        gradelist.insert(0,grade1)
+        gradelist.insert(1,grade2)
+        gradelist.insert(2,grade3)
+        gradelist.insert(3,grade4)
+        gradelist.insert(4,grade5)
+        gradelist.insert(5,grade6)
+        gradelist.insert(6,grade7)
+        self.grades = gradelist
+
+    def showCourse(self):
+        a=print(self.courses)
+        return a
+
+    def showGrades(self,ind):
+        stclasses=self.courses[ind]
+        marks=self.grades[ind]
+        response=print(self.name+" has achieved a grade of "+marks+"%"+" in "+stclasses+".")
     def __del__(self):
-        pass
+        print("Thank you for viewing the information of "+self.name)
 
     def average(self):
         a=len(self.grades)
         b=sum(self.grades)
         average=b/a
-        print(average)
         return average
-
+    def getHonorRoll(self):
+        stgrades=self.grades
+        stgrades.sort(reverse=True)
+        a=len(stgrades)
+        if a>= 5:
+            for i in range(0,6):
+                sttotal=0
+                stmarks=stgrades[ind]
+                sttotal=stotal+stmarks
+                honorroll=stotal/5
+                if honorroll>=86:
+                    return True
+                else:
+                    return False
+        else:
+            print(self.name+" does not have enough courses")
 def main():
     # This contains test data that will be used by the autograder.
     # do not modify this function
@@ -64,10 +94,11 @@ def main():
     st1.getGrades( [91, 94, 87, 99, 82, 100, 73])
     st1.average
     st2 = student("Joe Lunchbox","12346", 11)
-    st2.getCourses( ["English","Math","Physics","Computers","Geography","Chemistry","French"] )
-    st2.getGrades( [71, 98, 93, 95, 68, 81, 71])
-    st2.average(st2.getGrades)
+    st1.getCourses( ["English","Math","Physics","Computers","Geography","Chemistry","French"] )
+    st1.getGrades( [71, 98, 93, 95, 68, 81, 71])
+    
     
 
 
 main()
+
