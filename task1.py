@@ -1,4 +1,5 @@
 #! python3
+import time
 """
 (10 points) 
 Create a class object for a student.
@@ -23,17 +24,36 @@ constructor     - should require the student name, studentNumber and grade (in t
 """
 
 class student:
+    name=""
+    grade=""
+    studentnum=""
+    
+    
+
 
     # properties should be listed first
 
-    def __init__(): # You will need to create your own input parameters for all methods
-        pass
+    def __init__(self,name,studentnum,grade): # You will need to create your own input parameters for all methods
+        self.name=name
+        self.studentnum=studentnum
+        self.grade=grade
+        
 
-    def __del__():
+    def getCourses(self,classes):
+        self.courses=classes
+        
+    def getGrades(self,marks):
+        self.grades=marks
+        
+    def __del__(self):
         pass
 
     def average(self):
-        pass
+        a=len(self.grades)
+        b=sum(self.grades)
+        average=b/a
+        print(average)
+        return average
 
 def main():
     # This contains test data that will be used by the autograder.
@@ -41,13 +61,13 @@ def main():
 
     st1 = student("Anita Bath","91334",11)
     st1.getCourses( ["English","Math","PE","Computers","History","Biology","Japanese"] )
-    st1.getGrades( 91, 94, 87, 99, 82, 100, 73)
-
+    st1.getGrades( [91, 94, 87, 99, 82, 100, 73])
+    st1.average
     st2 = student("Joe Lunchbox","12346", 11)
-    st1.getCourses( ["English","Math","Physics","Computers","Geography","Chemistry","French"] )
-    st1.getGrades( 71, 98, 93, 95, 68, 81, 71)
-
-
+    st2.getCourses( ["English","Math","Physics","Computers","Geography","Chemistry","French"] )
+    st2.getGrades( [71, 98, 93, 95, 68, 81, 71])
+    st2.average(st2.getGrades)
+    
 
 
 main()
